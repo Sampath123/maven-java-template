@@ -39,11 +39,12 @@ public class AppTest
     public void testApp() throws IOException
     {
     	 movieManager mm=new movieManager();
+    	 movie m=new movie();
     	    
           // for movie data
        InputStream movieStream = mm.getClass().getClassLoader().getResourceAsStream("movie.data");   
      
-       Map<String, movie> movies =mm.getMovieMap(movieStream);
+       Map<String, movie> movies =m.getMovieMap(movieStream);
        assertEquals(2,movies.size());
     }
 }
