@@ -16,6 +16,7 @@ public class movie {
 	private String releaseDate;
 	private int totalRating;
 	private int countOfRating;	
+	private float avaragerating;
 	private ArrayList<Integer>genre;
 	
 	public int getId() {
@@ -64,13 +65,12 @@ public class movie {
 		this.countOfRating += countOfRating;
 	}
 	
-	
-	
 	@Override
 	public String toString() {
 		return "movie [id=" + id + ", name=" + name + ", releaseDate="
 				+ releaseDate + ", totalRating=" + totalRating
-				+ ", countOfRating=" + countOfRating + ", genre=" + genre + "]";
+				+ ", countOfRating=" + countOfRating + ", avaragerating="
+				+ avaragerating + ", genre=" + genre + "]";
 	}
 
 	public Map<String,movie> getMovieMap(InputStream movieStream) throws IOException{
@@ -89,8 +89,7 @@ public class movie {
 	        	  m.setId(Integer.parseInt(st.nextToken()));
     	          m.setName(st.nextToken());
     	          m.setReleaseDate(st.nextToken());
-    	          st.nextToken();
-    	          st.nextToken();
+                  st.nextToken();
     	          
 	       ArrayList<Integer>genreList=new ArrayList<>();	        	 
 	        	while (st.hasMoreTokens()) {	        		
@@ -100,6 +99,14 @@ public class movie {
     	         return m;   	                	 
 		 
 	 }
+
+public float getAvaragerating() {
+	return avaragerating;
+}
+
+public void setAvaragerating(float avaragerating) {
+	this.avaragerating = avaragerating;
+}
 	 
 	
 	

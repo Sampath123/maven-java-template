@@ -38,22 +38,41 @@ public class movieFreak {
 	}
 
 	
-//	public movie getWatchedMovie() {
-//List<movie> movieList = new ArrayList<movie>(movies.values());
-//		   
-//	    
-//    movie mostWatchedMovie = Collections.max(movieList, new Comparator<movie>() {
-//	        @Override
-//	        public int compare(movie first,movie second) {
-//	            if (first.getCountOfRating() > second.getCountOfRating())
-//	                return 1;
-//	            else if (first.getCountOfRating() < second.getCountOfRating())
-//	                return -1;
-//	            return 0;
-//	        }
-//	    });
-//		return mostWatchedMovie; 
-//	}
+	public movie getWatchedMovie() {
+List<movie> movieList = new ArrayList<movie>(movies.values());
+		   
+	    
+    movie mostWatchedMovie = Collections.max(movieList, new Comparator<movie>() {
+	        @Override
+	        public int compare(movie first,movie second) {
+	            if (first.getCountOfRating() > second.getCountOfRating())
+	                return 1;
+	            else if (first.getCountOfRating() < second.getCountOfRating())
+	                return -1;
+	            return 0;
+	        }
+	    });
+		return mostWatchedMovie; 
+	}
+
+	public movie getTopMovie() {
+		List<movie> movieList = new ArrayList<movie>(movies.values());
+		   
+	    
+	    movie topMovie = Collections.max(movieList, new Comparator<movie>() {
+		        @Override
+		        public int compare(movie first,movie second) {
+		            if (first.getAvaragerating() > second.getAvaragerating())
+		                return 1;
+		            else if (first.getAvaragerating() < second.getAvaragerating())
+		                return -1;
+		            return 0;
+		        }
+		    });
+			return topMovie; 
+	}
+	
+	
 
 
 }

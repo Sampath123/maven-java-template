@@ -3,9 +3,12 @@ package com.hashedin;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class movieManager {
+
+	private static movie movieObj1;
 
 	public static void main( String[] args ) throws ClassNotFoundException, IOException
     { 
@@ -49,24 +52,40 @@ public class movieManager {
     	userData ud=users.get(Integer.toString(ratingObj.getUserId()));
     	ud.setRatingCount(1);
     }
-   // System.out.println(movies);
+   //System.out.println(movies);
     //System.out.println(users);
     
     //pass movies,users list,rating list to movie freak
     movieFreak mf=new movieFreak(movies,users,ratings);
     
+    
+    List<movie> movieList = new ArrayList<movie>(movies.values());
+	   for(movie mList:movieList){
+		   mList.setAvaragerating((float)(mList.getTotalRating())/mList.getCountOfRating());;
+		   
+	   }
+    
     //call activeUser function and get most active user
     userData mostActiveUser=mf.getActiveUser();
+    //display Most Active User
     System.out.println("1.Most Active User:Unknown");
     System.out.println("ID:"+mostActiveUser.getuId()+ " and Total Ratings made:"+mostActiveUser.getRatingCount());
     
     
-//    //get most watched movie
-//    movie mostWatchedMovie=mf.getWatchedMovie();
-//    System.out.println("2.Most watched movie="+mostWatchedMovie.getName());
-//    System.out.println("Movie details:"+mostWatchedMovie);
+    //get most watched movie
+    movie mostWatchedMovie=mf.getWatchedMovie();
+    System.out.println("\n2.Most watched movie="+mostWatchedMovie.getName());
+    System.out.println("Movie Id : "+mostWatchedMovie.getId());
+    System.out.println("Movie Release Date :"+mostWatchedMovie.getReleaseDate());
+    System.out.println("Total rating :"+mostWatchedMovie.getTotalRating()+" made by "+mostWatchedMovie.getCountOfRating());
+    System.out.println("Genre : "+ mostWatchedMovie.getGenre());
+    System.out.println("Average Rating : "+mostWatchedMovie.getAvaragerating());
     
-    
+    //Top Movie
+    movie topMovie=mf.getTopMovie();
+    System.out.println("\n3.Top Movie : "+topMovie.getName());
+    System.out.println("Average Rating:"+topMovie.getAvaragerating()+" made by "+topMovie.getCountOfRating());
+   
       
 
 }	
