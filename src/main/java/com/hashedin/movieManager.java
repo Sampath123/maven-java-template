@@ -75,16 +75,13 @@ public class movieManager {
     System.out.println("Average Rating : "+mostWatchedMovie.getAvaragerating());
     
     //Top Movie
+    System.out.println("Top Movie");
     movie topMovie=mf.getTopMovie();
-    System.out.println("\n3.Top Movie : "+topMovie.getName()+ " Id : "+topMovie.getId());
-    System.out.print("Average Rating : "+topMovie.getAvaragerating());
-    System.out.println(" made by "+topMovie.getCountOfRating()+" users");
-    System.out.println("Genre :"+topMovie.getGenre());
-    
+     mm.displayMovie(topMovie);
     
       //top movie by year
     // am taking only  movies between 1970 to 2000 otherwise it will be very big 
-    System.out.println("\nTop Movies By Year");
+    System.out.println("\n4. Top Movies By Year");
     List<movie> movieListForYear = new ArrayList<movie>(movies.values());
     int year=1970;
     for(int i=0;i<30;i++)
@@ -105,28 +102,67 @@ public class movieManager {
          
         	}   	
     }
-    System.out.println("\n Top Movie by Genre");
-    System.out.println("Top Comedy Movie");
-	
-	List<movie> movieListForGenre = new ArrayList<movie>(movies.values());
-  
-    
-       List<movie>genreWiseList=new ArrayList<>();         	  
-        	    	  
-        	for(movie movieByGenre:movieListForGenre){
-    		if(movieByGenre.getGenre().contains("Comedy")){
-    			genreWiseList.add(movieByGenre);
-    		 }
-    	    }
-        	if (genreWiseList != null && !genreWiseList.isEmpty()){
-         movie topMovieByGenre=mf.getTopMovie(genreWiseList);
-         System.out.println("\nName : "+topMovieByGenre.getName());
+    System.out.println("\n5. Top Movie by Genre::");
+    System.out.println("\nTop Comedy Movie:");
+    movie topComedyMovie=mf.getTopMovieByGenre("Comedy");    
+    mm.displayMovie(topComedyMovie);     
+    System.out.println("\nTop Action Movie:");
+    movie topActionMovie=mf.getTopMovieByGenre("Action");
+    mm.displayMovie(topActionMovie);    
+    System.out.println("\nTop Adventure Movie:");
+    movie topAdventureMovie=mf.getTopMovieByGenre("Adventure");
+    mm.displayMovie(topAdventureMovie);
+    System.out.println("\nTop Animation Movie:");
+    movie topAnimationMovie=mf.getTopMovieByGenre("Animation");
+    mm.displayMovie(topAnimationMovie);   
+    System.out.println("\nTop Children Movie:");
+    movie topChildrenMovie=mf.getTopMovieByGenre("Children");
+    mm.displayMovie(topChildrenMovie); 
+    System.out.println("\nTop Crime Movie:");
+    movie topCrimeMovie=mf.getTopMovieByGenre("Crime");
+    mm.displayMovie(topCrimeMovie); 
+    System.out.println("\nTop Documentary Movie:");
+    movie topDocumentaryMovie=mf.getTopMovieByGenre("Documentary");
+    mm.displayMovie(topDocumentaryMovie); 
+    System.out.println("\nTop Drama Movie:");
+    movie topDramaMovie=mf.getTopMovieByGenre("Drama");
+    mm.displayMovie(topDramaMovie); 
+    System.out.println("\nTop Fantasy Movie:");
+    movie topFantasyMovie=mf.getTopMovieByGenre("Fantasy");
+    mm.displayMovie(topFantasyMovie); 
+    System.out.println("\nTop Film-Noir Movie:");
+    movie topFilmNoirMovie=mf.getTopMovieByGenre("Film-Noir");
+    mm.displayMovie(topFilmNoirMovie); 
+    System.out.println("\nTop Horror Movie:");
+    movie topHorrorMovie=mf.getTopMovieByGenre("Horror");
+    mm.displayMovie(topHorrorMovie); 
+    System.out.println("\nTop Sci-Fi Movie:");
+    movie topSciFiMovie=mf.getTopMovieByGenre("Sci-Fi");
+    mm.displayMovie(topSciFiMovie);
+    System.out.println("\nTop Mystery Movie:");
+    movie topMysteryMovie=mf.getTopMovieByGenre("Mystery");
+    mm.displayMovie(topMysteryMovie); 
+    System.out.println("\nTop Thriller");
+    movie topThrillerMovie=mf.getTopMovieByGenre("Thriller");
+    mm.displayMovie(topThrillerMovie); 
+    System.out.println("\nTop War Movie:");
+    movie topWarMovie=mf.getTopMovieByGenre("War");
+    mm.displayMovie(topWarMovie); 
+    System.out.println("\nTop Romance Movie:");
+    movie topRomanceMovie=mf.getTopMovieByGenre("Romance");
+    mm.displayMovie(topRomanceMovie); 
+    System.out.println("\nTop Western Movie:");
+    movie topWesternMovie=mf.getTopMovieByGenre("Western");
+    mm.displayMovie(topWesternMovie); 
+}
+
+	private void displayMovie(movie topMovieByGenre) {
+		 System.out.println("\nName : "+topMovieByGenre.getName());
          System.out.print("Total rating :"+topMovieByGenre.getTotalRating());
          System.out.println(" made by "+topMovieByGenre.getCountOfRating()+" users");
          System.out.println("Genre : "+ topMovieByGenre.getGenre());
          System.out.println("Average Rating : "+topMovieByGenre.getAvaragerating());
-        }
-    
-    
-}	
+		// TODO Auto-generated method stub
+		
+	}	
 }

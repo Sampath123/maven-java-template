@@ -79,4 +79,24 @@ public class movieFreak {
 		    });
 			return topMovie; 
 	}
+
+	public movie getTopMovieByGenre(String genreType) {
+		String thisGenre=genreType;
+
+		List<movie> movieListForGenre = new ArrayList<movie>(movies.values());
+	  
+	    
+	       List<movie>genreWiseList=new ArrayList<>();         	  
+	        	    	  
+	        	for(movie movieByGenre:movieListForGenre){
+	    		if(movieByGenre.getGenre().contains(thisGenre)){
+	    			genreWiseList.add(movieByGenre);
+	    		 }
+	    	    }
+	        	if (genreWiseList != null && !genreWiseList.isEmpty()){
+	               return getTopMovie(genreWiseList);
+	        	}
+	        	else	        	
+				return null;
+	}
 }
