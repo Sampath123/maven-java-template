@@ -41,21 +41,33 @@ public class movieManager {
     
     // now we have movies,users,rating
     //use ratings add ratingCount for user and add totalRating & countOfRating to movie
-    
+     movie movieObj;
     for(rating ratingObj :ratings ) {
-    	movie movieObj=movies.get(Integer.toString(ratingObj.getMovieId()));
+    	movieObj=movies.get(Integer.toString(ratingObj.getMovieId()));
     	movieObj.setCountOfRating(1);
     	movieObj.setTotalRating(ratingObj.getRatingValue());
     	userData ud=users.get(Integer.toString(ratingObj.getUserId()));
     	ud.setRatingCount(1);
     }
-   //  System.out.println(movies);
+   // System.out.println(movies);
     //System.out.println(users);
     
+    //pass movies,users list,rating list to movie freak
     movieFreak mf=new movieFreak(movies,users,ratings);
-    //mf.getActiveUser();
-   
     
+    //call activeUser function and get most active user
+    userData mostActiveUser=mf.getActiveUser();
+    System.out.println("1.Most Active User:Unknown");
+    System.out.println("ID:"+mostActiveUser.getuId()+ " and Total Ratings made:"+mostActiveUser.getRatingCount());
+    
+    
+//    //get most watched movie
+//    movie mostWatchedMovie=mf.getWatchedMovie();
+//    System.out.println("2.Most watched movie="+mostWatchedMovie.getName());
+//    System.out.println("Movie details:"+mostWatchedMovie);
+    
+    
+      
 
 }	
 }
