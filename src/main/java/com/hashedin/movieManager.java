@@ -83,10 +83,37 @@ public class movieManager {
     
     //Top Movie
     movie topMovie=mf.getTopMovie();
-    System.out.println("\n3.Top Movie : "+topMovie.getName());
-    System.out.println("Average Rating:"+topMovie.getAvaragerating()+" made by "+topMovie.getCountOfRating());
-   
-      
+    System.out.println("\n3.Top Movie : "+topMovie.getName()+ " Id : "+topMovie.getId());
+    System.out.print("Average Rating : "+topMovie.getAvaragerating());
+    System.out.println(" made by "+topMovie.getCountOfRating()+" users");
+    System.out.println("Genre :"+topMovie.getGenre());
+    
+    
+      //top movie by year
+    // am taking only  movies between 1990 to 2000
+    System.out.println("\nTop year By Year");
+    List<movie> movieListForYear = new ArrayList<movie>(movies.values());
+    int year=1970;
+    for(int i=0;i<30;i++)
+    {    List<movie>yearWiseList=new ArrayList<>(); 
+        	  
+        	   year++;
+        	  
+        	for(movie movieByYear:movieListForYear){
+    		if(movieByYear.getName().contains(Integer.toString(year))){
+    			yearWiseList.add(movieByYear);
+    		 }
+    	    }
+        	if (yearWiseList != null && !yearWiseList.isEmpty()){
+         movie topMovieByYear=mf.getTopMovie(yearWiseList);
+         System.out.println("Year "+year+" : \nName : "+topMovieByYear.getName());
+         System.out.println("Total rating :"+topMovieByYear.getTotalRating()+" made by "+topMovieByYear.getCountOfRating());
+         System.out.println("Genre : "+ topMovieByYear.getGenre());
+         System.out.println("Average Rating : "+topMovieByYear.getAvaragerating());
+         
+        	}
+    	
+    }
 
 }	
 }

@@ -17,7 +17,7 @@ public class movie {
 	private int totalRating;
 	private int countOfRating;	
 	private float avaragerating;
-	private ArrayList<Integer>genre;
+	private ArrayList<String>genre;
 	
 	public int getId() {
 		return id;
@@ -43,10 +43,10 @@ public class movie {
 		this.releaseDate = releaseDate;
 	}
 	
-	public ArrayList<Integer> getGenre() {
+	public ArrayList<String> getGenre() {
 		return genre;
 	}
-	public void setGenre(ArrayList<Integer> genre) {
+	public void setGenre(ArrayList<String> genre) {
 		this.genre = genre;
 	}	
 	
@@ -90,10 +90,54 @@ public class movie {
     	          m.setName(st.nextToken());
     	          m.setReleaseDate(st.nextToken());
                   st.nextToken();
-    	          
-	       ArrayList<Integer>genreList=new ArrayList<>();	        	 
-	        	while (st.hasMoreTokens()) {	        		
-	        		genreList.add(Integer.parseInt(st.nextToken()));
+                  int i=0;
+	       ArrayList<String>genreList=new ArrayList<>();	        	 
+	        	while (st.hasMoreTokens()) {	
+	        		
+	        		
+	        		if(Integer.parseInt(st.nextToken())==1){
+	                switch (i) {
+	                    case 0:  genreList.add("unknown");
+	                             break;
+	                    case 1:  genreList.add("Action");
+	                             break;
+	                    case 2:  genreList.add("Adventure");
+	                             break;
+	                    case 3:  genreList.add("Animation");
+	                             break;
+	                    case 4:  genreList.add("Children");
+	                             break;
+	                    case 5:  genreList.add("Comedy");
+	                             break;
+	                    case 6:  genreList.add("Crime");
+	                             break;
+	                    case 7:  genreList.add("Documentary");
+	                             break;
+	                    case 8:  genreList.add("Drama");
+	                             break;
+	                    case 9:  genreList.add("Fantasy");
+	                             break;
+	                    case 10: genreList.add("Film-Noir");
+	                             break;
+	                    case 11: genreList.add("Horror");
+	                             break;
+	                    case 12: genreList.add("Musical|12");
+	                             break;
+	                    case 13: genreList.add("Mystery");
+                                 break;
+	                    case 14: genreList.add("Romance");
+                                 break;
+	                    case 15: genreList.add("Sci-Fi");
+                                 break;
+	                    case 16: genreList.add("Thriller");
+                                 break;
+	                    case 17: genreList.add("War");
+                                 break;
+	                    case 18: genreList.add("Western");
+                                 break;
+	                 }
+	        		}
+	        		i++;
 	        	 }
 	               m.setGenre(genreList);
     	         return m;   	                	 
