@@ -8,10 +8,8 @@ import java.util.Map;
 
 public class movieManager {
 
-	private static movie movieObj1;
-
 	public static void main( String[] args ) throws ClassNotFoundException, IOException
-    { 
+     { 
 		
         movieManager mm=new movieManager();       
      // for movie data
@@ -39,9 +37,7 @@ public class movieManager {
 //    Map<String, String> genres =g.getGenreMap(genreStream);
 //    System.out.println(genres);
 //    System.out.println("\n");
-  
-     
-    
+         
     // now we have movies,users,rating
     //use ratings add ratingCount for user and add totalRating & countOfRating to movie
      movie movieObj;
@@ -52,14 +48,10 @@ public class movieManager {
     	userData ud=users.get(Integer.toString(ratingObj.getUserId()));
     	ud.setRatingCount(1);
     }
-   //System.out.println(movies);
-    //System.out.println(users);
-    
-    //pass movies,users list,rating list to movie freak
-    movieFreak mf=new movieFreak(movies,users,ratings);
-    
-    
-    List<movie> movieList = new ArrayList<movie>(movies.values());
+   
+    //pass movies,users list,rating list to movie freak constructor
+     movieFreak mf=new movieFreak(movies,users,ratings);        
+     List<movie> movieList = new ArrayList<movie>(movies.values());
 	   for(movie mList:movieList){
 		   mList.setAvaragerating((float)(mList.getTotalRating())/mList.getCountOfRating());;
 		   
@@ -68,7 +60,7 @@ public class movieManager {
     //call activeUser function and get most active user
     userData mostActiveUser=mf.getActiveUser();
     //display Most Active User
-    System.out.println("1.Most Active User:Unknown");
+    System.out.println("\n1.Most Active User:Unknown");
     System.out.println("ID:"+mostActiveUser.getuId()+ " and Total Ratings made:"+mostActiveUser.getRatingCount());
     
     
@@ -77,7 +69,8 @@ public class movieManager {
     System.out.println("\n2.Most watched movie="+mostWatchedMovie.getName());
     System.out.println("Movie Id : "+mostWatchedMovie.getId());
     System.out.println("Movie Release Date :"+mostWatchedMovie.getReleaseDate());
-    System.out.println("Total rating :"+mostWatchedMovie.getTotalRating()+" made by "+mostWatchedMovie.getCountOfRating());
+    System.out.print("Total rating :"+mostWatchedMovie.getTotalRating());
+    System.out.println(" made by "+mostWatchedMovie.getCountOfRating()+" users");
     System.out.println("Genre : "+ mostWatchedMovie.getGenre());
     System.out.println("Average Rating : "+mostWatchedMovie.getAvaragerating());
     
@@ -90,30 +83,50 @@ public class movieManager {
     
     
       //top movie by year
-    // am taking only  movies between 1990 to 2000
-    System.out.println("\nTop year By Year");
+    // am taking only  movies between 1970 to 2000 otherwise it will be very big 
+    System.out.println("\nTop Movies By Year");
     List<movie> movieListForYear = new ArrayList<movie>(movies.values());
     int year=1970;
     for(int i=0;i<30;i++)
-    {    List<movie>yearWiseList=new ArrayList<>(); 
-        	  
-        	   year++;
-        	  
+    {    List<movie>yearWiseList=new ArrayList<>();         	  
+        	   year++;        	  
         	for(movie movieByYear:movieListForYear){
-    		if(movieByYear.getName().contains(Integer.toString(year))){
+    		if(movieByYear.getReleaseDate().contains(Integer.toString(year))){
     			yearWiseList.add(movieByYear);
     		 }
     	    }
         	if (yearWiseList != null && !yearWiseList.isEmpty()){
          movie topMovieByYear=mf.getTopMovie(yearWiseList);
-         System.out.println("Year "+year+" : \nName : "+topMovieByYear.getName());
-         System.out.println("Total rating :"+topMovieByYear.getTotalRating()+" made by "+topMovieByYear.getCountOfRating());
+         System.out.println("\nYear "+year+" : \nName : "+topMovieByYear.getName());
+         System.out.print("Total rating :"+topMovieByYear.getTotalRating());
+         System.out.println(" made by "+topMovieByYear.getCountOfRating()+" users");
          System.out.println("Genre : "+ topMovieByYear.getGenre());
          System.out.println("Average Rating : "+topMovieByYear.getAvaragerating());
          
-        	}
-    	
+        	}   	
     }
-
+    System.out.println("\n Top Movie by Genre");
+    System.out.println("Top Comedy Movie");
+	
+	List<movie> movieListForGenre = new ArrayList<movie>(movies.values());
+  
+    
+       List<movie>genreWiseList=new ArrayList<>();         	  
+        	    	  
+        	for(movie movieByGenre:movieListForGenre){
+    		if(movieByGenre.getGenre().contains("Comedy")){
+    			genreWiseList.add(movieByGenre);
+    		 }
+    	    }
+        	if (genreWiseList != null && !genreWiseList.isEmpty()){
+         movie topMovieByGenre=mf.getTopMovie(genreWiseList);
+         System.out.println("\nName : "+topMovieByGenre.getName());
+         System.out.print("Total rating :"+topMovieByGenre.getTotalRating());
+         System.out.println(" made by "+topMovieByGenre.getCountOfRating()+" users");
+         System.out.println("Genre : "+ topMovieByGenre.getGenre());
+         System.out.println("Average Rating : "+topMovieByGenre.getAvaragerating());
+        }
+    
+    
 }	
 }

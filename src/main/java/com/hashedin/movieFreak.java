@@ -21,8 +21,7 @@ public class movieFreak {
 		}
 
 	public userData getActiveUser() {
-		List<userData> userList = new ArrayList<userData>(users.values());
-		   
+		List<userData> userList = new ArrayList<userData>(users.values());  
 	    
 	    userData mostActiveUser = Collections.max(userList, new Comparator<userData>() {
 	        @Override
@@ -35,13 +34,9 @@ public class movieFreak {
 	        }
 	    });
 		return mostActiveUser; 
-	}
-
-	
+	}	
 	public movie getWatchedMovie() {
-List<movie> movieList = new ArrayList<movie>(movies.values());
-		   
-	    
+    List<movie> movieList = new ArrayList<movie>(movies.values());   
     movie mostWatchedMovie = Collections.max(movieList, new Comparator<movie>() {
 	        @Override
 	        public int compare(movie first,movie second) {
@@ -56,14 +51,12 @@ List<movie> movieList = new ArrayList<movie>(movies.values());
 	}
 
 	public movie getTopMovie() {
-		List<movie> movieList = new ArrayList<movie>(movies.values());
-		   
-	    
-	    movie topMovie = Collections.max(movieList, new Comparator<movie>() {
+		List<movie> movieList = new ArrayList<movie>(movies.values());   
+	     movie topMovie = Collections.max(movieList, new Comparator<movie>() {
 		        @Override
 		        public int compare(movie first,movie second) {
-		            if (first.getAvaragerating() > second.getAvaragerating())
-		                return 1;
+		         if (first.getAvaragerating() > second.getAvaragerating())
+		              return 1;
 		            else if (first.getAvaragerating() < second.getAvaragerating())
 		                return -1;
 		            return 0;
@@ -73,23 +66,17 @@ List<movie> movieList = new ArrayList<movie>(movies.values());
 	}
 
 	public movie getTopMovie(List<movie> yearWiseList) {
-	List<movie> movieList = new ArrayList<movie>(yearWiseList);
-		   
-	    
-	    movie topMovie = Collections.max(movieList, new Comparator<movie>() {
-		        @Override
-		        public int compare(movie first,movie second) {
-		            if (first.getAvaragerating() > second.getAvaragerating())
-		                return 1;
-		            else if (first.getAvaragerating() < second.getAvaragerating())
-		                return -1;
-		            return 0;
+	List<movie> movieList = new ArrayList<movie>(yearWiseList);	   
+     movie topMovie = Collections.max(movieList, new Comparator<movie>() {
+	        @Override
+	        public int compare(movie first,movie second) {
+	            if (first.getAvaragerating() > second.getAvaragerating())
+	                return 1;
+	            else if (first.getAvaragerating() < second.getAvaragerating())
+                 return -1;
+	            return 0;
 		        }
 		    });
 			return topMovie; 
 	}
-	
-	
-
-
 }

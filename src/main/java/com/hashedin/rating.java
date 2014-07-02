@@ -37,7 +37,6 @@ public void setRatingValue(int ratingValue) {
 	this.ratingValue = ratingValue;
 }
 
-
 public ArrayList<rating> getRatingArray(InputStream ratingStream) throws IOException {
 	ArrayList<rating> ratings = new ArrayList<rating>();
 		
@@ -49,12 +48,8 @@ public ArrayList<rating> getRatingArray(InputStream ratingStream) throws IOExcep
 			rating r =parseRatings(line);
 			
 		    ratings.add(r);
-		}
-		 
+		}		 
 		return ratings;
-		 
-	
-	
 }
 
 public rating parseRatings(String line) {
@@ -65,9 +60,7 @@ public rating parseRatings(String line) {
 	  r.setUserId(Integer.parseInt(st.nextToken()));
 	  r.setMovieId(Integer.parseInt(st.nextToken()));
 	  r.setRatingValue(Integer.parseInt(st.nextToken()));
-	  
-         return r;   
-	
+	   return r;   	
 }
 
 }
